@@ -12,6 +12,7 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/xukiki/NSString-Qqc.git", :tag => "#{s.version}" }
   
   s.source_files  = ["NSString-Qqc/*.{h,m}"]
+  s.sources='https://github.com/xukiki/NSData-Qqc,https://github.com/CocoaPods/Specs'
   s.dependency 'NSData+Qqc'
 
 end
