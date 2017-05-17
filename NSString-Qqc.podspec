@@ -12,6 +12,6 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/xukiki/NSString-Qqc.git", :tag => "#{s.version}" }
   
   s.source_files  = ["NSString-Qqc/*.{h,m}"]
-  s.dependency 'NSData+Qqc', '~>1.0.22'
+  s.dependency 'NSData+Qqc'
 
 end
