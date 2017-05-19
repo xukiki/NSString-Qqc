@@ -7,6 +7,7 @@
 //
 
 #import "NSString+Qqc.h"
+#import "NSData+Qqc.h"
 
 @implementation NSString (Qqc)
 
@@ -377,6 +378,12 @@
  */
 + (NSString *)textFromBase64String:(NSString *)base64
 {
+    if (base64 && ![base64 isEqualToString:@""])
+    {
+        NSData *data = [NSData dataWithBase64EncodedString:base64];
+        return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    }
+    
     return @"";
 }
 
@@ -389,6 +396,12 @@
  */
 + (NSString *)base64StringFromText:(NSString *)text
 {
+    if (text && ![text isEqualToString:@""])
+    {
+        NSData *data = [text dataUsingEncoding:NSUTF8StringEncoding];
+        return [NSData base64EncodedStringFrom:data];
+    }
+    
     return @"";
 }
 
@@ -399,7 +412,8 @@
  */
 - (NSString*)md5HexDigest
 {
-    return @"";
+    NSData *data = [self dataUsingEncoding:NSUTF8StringEncoding];
+    return [data md5HexDigest];
 }
 
 - (CGRect)constrainedWithFont:(UIFont*)font maxSize:(CGSize)maxSize
